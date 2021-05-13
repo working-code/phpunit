@@ -3,7 +3,7 @@
 function calculator(string $operation)
 {
     if (func_num_args() < 3) {
-        return "Вы передали недостаточно аргументов";
+        return throw new Exception("Вы передали недостаточно аргументов");
     }
 
     $operands = func_get_args();
@@ -19,11 +19,11 @@ function calculator(string $operation)
             $operand1 *= $operand;
         } elseif ($operation === '/') {
             if ($operand === 0) {
-                return "Деление на 0";
+                return throw new Exception("Деление на 0");
             }
             $operand1 /= $operand;
         } else {
-            return "Недопустимая операция $operation";
+            return throw new Exception("Недопустимая операция $operation");
         }
     }
     return $operand1;
