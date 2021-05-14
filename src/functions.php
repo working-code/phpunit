@@ -11,6 +11,9 @@ function calculator(string $operation)
     $operand1 = array_shift($operands);
 
     foreach ($operands as $operand) {
+        if (!is_numeric($operand)) {
+            throw new TypeError("Параметр не является числом");
+        }
         if ($operation === '+') {
             $operand1 += $operand;
         } elseif ($operation === '-') {
